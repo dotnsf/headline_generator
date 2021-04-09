@@ -92,10 +92,12 @@ function generateHeadline(){
     url: '/' + type,
     data: data,
     success: function( result ){
+      result = JSON.parse( result );
       console.log( result );
       if( result ){
         if( result.status ){
-          $('#result').html( JSON.stringify( result.result ) );
+          var text = result.result.result.join( '' );
+          $('#result').html( text );
         }else{
           $('#result').html( JSON.stringify( result.error ) );
         }
